@@ -1,20 +1,14 @@
-import React from "react";
-import type { NavSection } from "../../types";
 import { Icon } from "../IconMap";
+import type { NavSection } from "../../types";
 
 export default function MegaMenu({ sections }: { sections: NavSection[] }) {
   return (
-    <div
-      role="menu"
-      aria-label="Solutions"
-      className="bg-white rounded-xl shadow-lg p-6 transition-smooth ring-0"
-    >
+    <div role="menu" aria-label="Solutions" className="bg-white rounded-xl shadow-lg p-6 transition-smooth ring-0">
       <div className="grid grid-cols-2 gap-8">
         {sections.map((sec) => (
-          <div key={sec.title} className="">
+          <div key={sec.title}>
             <h4 className="text-xs font-semibold text-slate-500 mb-4">{sec.title}</h4>
 
-            {/* 2-column internal grid for items */}
             <ul className="grid grid-cols-2 gap-3">
               {sec.items.map((it) => (
                 <li key={it.label}>

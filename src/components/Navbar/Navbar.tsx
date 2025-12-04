@@ -1,25 +1,27 @@
+import * as Icons from "lucide-react";
 import React from "react";
 import { navbarItems } from "../../data/navbarData";
 import MegaMenu from "../MegaMenu/MegaMenu";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import * as Icons from "lucide-react";
 import useClickAway from "../../utils/useClickAway";
 
 export default function Navbar() {
   const [open, setOpen] = React.useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
+
   useClickAway(containerRef, () => setOpen(null));
 
-  // keyboard: Esc to close
   React.useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { setOpen(null); setMobileOpen(false); } };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(null);
+        setMobileOpen(false);
+      }
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
-
-  // subtle morphing: track current sections for animation (simple crossfade)
-  const currentSections = navbarItems.find(it => it.menu === open)?.sections ?? null;
 
   return (
     <header className="relative bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400">
@@ -28,8 +30,8 @@ export default function Navbar() {
           <div className="flex items-center gap-6">
             <div className="text-2xl font-bold text-white">Logo</div>
             <nav className="hidden md:flex gap-2 items-center" aria-label="Main navigation">
-              {navbarItems.map(item => (
-                <div key={item.menu} ref={item.menu === open ? containerRef : null} className="relative">
+              {navbarItems.map((item) => (
+                <div key={item.menu} className="relative" ref={item.menu === open ? containerRef : null}>
                   {item.menu === "Solutions" ? (
                     <button
                       onMouseEnter={() => setOpen("Solutions")}
@@ -44,7 +46,9 @@ export default function Navbar() {
                       <Icons.ChevronDown className={`w-4 h-4 transition-transform ${open === "Solutions" ? "rotate-180" : ""}`} />
                     </button>
                   ) : (
-                    <a href={item.url} className="px-3 py-2 rounded-md text-white hover:bg-white/10">{item.menu}</a>
+                    <a href={item.url} className="px-3 py-2 rounded-md text-white hover:bg-white/10">
+                      {item.menu}
+                    </a>
                   )}
 
                   {/* floating panel */}
@@ -71,9 +75,15 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <div className="hidden md:flex gap-2">
-              <a href="/signin" className="text-white">Sign in</a>
-              <a href="/signup" className="px-3 py-2 rounded-md bg-white text-slate-900">Start now</a>
-              <a href="/contact" className="px-3 py-2 rounded-md border border-white/30 text-white">Contact sales</a>
+              <a href="/signin" className="text-white">
+                Sign in
+              </a>
+              <a href="/signup" className="px-3 py-2 rounded-md bg-white text-slate-900">
+                Start now
+              </a>
+              <a href="/contact" className="px-3 py-2 rounded-md border border-white/30 text-white">
+                Contact sales
+              </a>
             </div>
 
             <button className="md:hidden p-2 rounded-md text-white" onClick={() => setMobileOpen(true)} aria-label="Open menu">
