@@ -7,7 +7,7 @@ This project replicates the same UX, spacing, grid structure, animations, and mo
 🚀 Live Demo
 
 (Add your deployed Vercel link here)
-👉 https://your-deployment-url.vercel.app
+👉 https://stripe-navbar-ten.vercel.app
 
 ✨ Features
 🌐 Desktop Features
@@ -141,7 +141,7 @@ Back navigation & bottom-fixed CTAs
 
 🛠 Installation
 1. Clone the repo
-git clone https://github.com/your-username/stripe-navbar.git
+git clone https://github.com/ShivaBoya/StripeNavbar
 cd stripe-navbar
 
 2. Install dependencies
