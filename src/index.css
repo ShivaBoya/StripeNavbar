@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+
+@tailwind base;
+
+
+@tailwind components;
+@tailwind utilities;
+
+/* subtle helper */
+.transition-smooth { transition: all 160ms cubic-bezier(.2,.9,.2,1); }
+
+/* small "arrow" caret above the panel */
+.menu-caret {
+  width: 14px;
+  height: 8px;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  background: white;
+  transform: translateY(-6px) rotate(0deg);
+  filter: drop-shadow(0 -1px 0 rgba(0,0,0,0.02));
+}
